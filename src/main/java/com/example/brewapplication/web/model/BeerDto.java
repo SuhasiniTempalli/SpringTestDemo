@@ -8,11 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class BeerDto {
-
     private UUID id;
     private String beerName;
     private String beerStyle;

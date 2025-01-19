@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @Service
 public class BeerServiceImpl implements BeerService {
+    //To Test the beer service impl
     @Override
     public BeerDto getBeerById(UUID beerId) {
         return BeerDto.builder().id(UUID.randomUUID())

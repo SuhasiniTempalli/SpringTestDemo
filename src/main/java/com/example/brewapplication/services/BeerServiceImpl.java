@@ -1,6 +1,7 @@
 package com.example.brewapplication.services;
 
 import com.example.brewapplication.web.model.BeerDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -14,6 +15,22 @@ public class BeerServiceImpl implements BeerService {
                 .beerName("Galaxy Cat")
                 .beerStyle("Pale Ale")
                 .build();
+    }
+
+    /**
+     * @param beerDto
+     * @return
+     */
+    @Override
+    public BeerDto saveNewBeer(BeerDto beerDto) {
+        return BeerDto.builder()
+                .id(UUID.randomUUID())
+                .build();
+    }
+
+    @Override
+    public void updateBeer(UUID beerId,BeerDto beerDto){
+        //todo impl - would add a real impl to update beergit
     }
 }
 

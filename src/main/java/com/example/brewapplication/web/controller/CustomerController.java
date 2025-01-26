@@ -3,12 +3,16 @@ package com.example.brewapplication.web.controller;
 import com.example.brewapplication.services.CustomerService;
 import com.example.brewapplication.web.model.BeerDto;
 import com.example.brewapplication.web.model.CustomerDto;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -24,7 +28,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity createCustomer(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity createCustomer(@Valid @RequestBody CustomerDto customerDto) {
         CustomerDto customer = customerService.saveCustomer(customerDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/customer/" + customer.getId());
@@ -32,7 +36,7 @@ public class CustomerController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity updateCustomer(@PathVariable UUID id,@RequestBody CustomerDto customerDto){
+    public ResponseEntity updateCustomer(@PathVariable UUID id,@Valid @RequestBody CustomerDto customerDto){
         customerService.updateCustomer(id,customerDto);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -42,5 +46,6 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return new ResponseEntity(HttpStatus.OK);
     }
+
 }
 

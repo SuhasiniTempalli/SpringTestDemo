@@ -37,7 +37,7 @@ public class BeerServiceImpl implements BeerService {
     }
 
     public void deleteById(UUID beerId) {
-        log.debug("Deleting a beer...");
+        //log.debug("Deleting a beer...");
     }
 }
 

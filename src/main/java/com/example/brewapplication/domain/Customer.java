@@ -1,7 +1,5 @@
-package com.example.brewapplication.web.model;
+package com.example.brewapplication.domain;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,11 +11,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class CustomerDto {
+public class Customer {
     private UUID id;
-    @NotBlank
-    @Size(min=3,max=100)
     private String name;
 
 }
